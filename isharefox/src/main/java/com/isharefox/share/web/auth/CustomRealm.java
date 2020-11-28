@@ -39,7 +39,7 @@ public class CustomRealm extends AuthorizingRealm implements InitializingBean {
         }
         if (ObjectUtils.nullSafeEquals(user.getPassword(), new String(token.getPassword()))) {
             log.info("==================认证成功,结束===================");
-            return new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), getName());
+            return new SimpleAuthenticationInfo(user, token.getPassword(), getName());
         } else {
             log.error("用户登录失败");
             throw new UnknownAccountException("登录失败");

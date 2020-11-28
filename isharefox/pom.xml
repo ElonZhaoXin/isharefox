@@ -153,10 +153,27 @@
     </dependencies>
 
     <build>
+        <finalName>isharefox</finalName>
         <plugins>
+            <!--这个仅在web目录下指定打包 不在父pom中指定-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.isharefox.share.IsharefoxApplication</mainClass>
+                    <!--热部署
+                    https://docs.spring.io/spring-boot/docs/2.4.0/reference/html/using-spring-boot.html#using-boot-devtools-restart
+                    -->
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

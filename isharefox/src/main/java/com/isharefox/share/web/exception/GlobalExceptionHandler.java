@@ -19,6 +19,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Set;
 
 /**
@@ -136,6 +138,16 @@ public class GlobalExceptionHandler {
                 .builder()
                 .code(e.getResultCode())
                 .message(e.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public BaseResponse handleError(SQLIntegrityConstraintViolationException e) {
+        log.error("数据库插入异常", e);
+        return BaseResponse
+                .builder()
+                .code(ResultCode.INTERNAL_SERVER_ERROR)
+                .message("数据重复，请更换数据后重试尝试!")
                 .build();
     }
 
