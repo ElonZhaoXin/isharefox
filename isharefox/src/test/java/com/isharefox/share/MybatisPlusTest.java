@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.isharefox.share.orm.mapper.UserMapper;
 import com.isharefox.share.user.User;
+import com.isharefox.share.user.orm.mapper.UserMapper;
 
 
 @RunWith(SpringRunner.class)

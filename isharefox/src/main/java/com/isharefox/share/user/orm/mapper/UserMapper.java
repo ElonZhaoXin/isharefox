@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.isharefox.share.orm.mapper;
+package com.isharefox.share.user.orm.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.isharefox.share.user.User;
