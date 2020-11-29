@@ -91,3 +91,40 @@ CREATE TABLE `user_account` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-11-28 21:44:58
+
+CREATE TABLE `order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(4) NOT NULL COMMENT '客户编号',
+  `notify_time` datetime COMMENT '通知时间 格式为yyyy-MM-dd HH:mm:ss。',
+	 `notify_type` varchar(64)  COMMENT '通知类型	 trade_status_sync',
+	 `trade_no` varchar(64)  COMMENT '支付宝交易号',
+	 `app_id` varchar(32)  COMMENT '开发者的app_id',
+	 `out_trade_no` varchar(64) NOT NULL COMMENT '商户订单号原支付请求的商户订单号',
+	 `out_biz_no` varchar(64) COMMENT '商户业务号商户业务 ID，主要是退款通知中返回退款申请的流水号。	HZRF001',
+	 `buyer_id` varchar(16)  COMMENT '买家支付宝用户号 买家支付宝账号对应的支付宝唯一用户号。	2088102122524330',
+	 `buyer_logon_id` varchar(100)  COMMENT '买家支付宝账号',
+	 `seller_id` varchar(30) COMMENT '卖家支付宝用户号',
+	 `seller_email` varchar(100)  COMMENT '卖家支付宝账号',
+	 `trade_status` varchar(32)  COMMENT '交易状态	 TRADE_CLOSED-未付款交易超时关闭，或支付完成后全额退款;WAIT_BUYER_PAY-交易创建，等待买家付款;TRADE_SUCCESS-交易支付成功;TRADE_FINISHED-交易结束，不可退款.',
+	 `total_amount` decimal(9,2)  COMMENT '订单金额	',
+	 `receipt_amount` decimal(9,2)  COMMENT '实收金额',
+	 `invoice_amount` decimal(9,2)  COMMENT '开票金额用户在交易中支付的可开发票的金额。	10',
+	 `buyer_pay_amount` decimal(9,2)  COMMENT '付款金额用户在交易中支付的金额。	13.88',
+	 `point_amount` decimal(9,2)  COMMENT '集分宝金额使用集分宝支付的金额。	12',
+	 `refund_fee` decimal(9,2)  COMMENT '总退款金额退款通知中，返回总退款金额，单位为元，支持两位小数。	2.58 ',
+	 `send_back_fee` decimal(9,2)  COMMENT '实际退款金额商户实际退款给用户的金额，单位为元，支持两位小数。	2.08 ',
+	 `subject` varchar(256)  COMMENT '订单标题	商品的标题/交易标题/订单标题/订单关键字等，是请求时对应的参数，原样通知回来。',
+	 `body` varchar(400)  COMMENT '商品描述	该订单的备注、描述、明细等。对应请求时body 参数，原样通知回来。',
+	 `gmt_create` datetime  COMMENT '交易创建时间该笔交易创建的时间。格式为 yyyy-MM-dd HH:mm:ss',
+	 `gmt_payment` datetime  COMMENT '交易付款时间该笔交易的买家付款时间。格式为 yyyy-MM-dd HH:mm:ss',
+	 `gmt_refund` datetime  COMMENT '交易退款时间该笔交易的退款时间。格式为 yyyy-MM-dd HH:mm:ss.S。',
+	 `gmt_close` datetime  COMMENT '交易结束时间该笔交易结束时间。格式为 yyyy-MM-dd HH:mm:ss。',
+	 `fund_bill_list` varchar(512) COMMENT '支付金额信息支付成功的各个渠道金额信息，详见资金明细信息说明。	[{"amount":"15.00","fundChannel":"ALIPAYACCOUNT"}]',
+  `status` varchar(1) NOT NULL COMMENT '0-异常；1-正常',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  PRIMARY KEY (`id`),
+  KEY `UK` (`out_trade_no`) COMMENT '订单编号',
+  KEY `userid` (`user_id`) COMMENT '用户编号'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		

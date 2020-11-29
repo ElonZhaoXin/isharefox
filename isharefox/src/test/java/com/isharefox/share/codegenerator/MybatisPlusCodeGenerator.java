@@ -17,19 +17,38 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 @SpringBootTest
 public class MybatisPlusCodeGenerator {
 	
+	/**
+	 * 商品模块
+	 */
 	@Test
 	public void testItemCodeGenerator() {
 		generateCode("item", "item");
 	}
-	
+
+	/**
+	 * 用户模块
+	 */
 	@Test
 	public void testUserCodeGenerator() {
 		generateCode("user", "user");
 	}
 	
+
+	/**
+	 * 交易模块
+	 */
 	@Test
 	public void testTradeCodeGenerator() {
 		generateCode("trade", "user_account");
+	}
+	
+
+	/**
+	 * 阿里结算支付模块
+	 */
+	@Test
+	public void testOrderCodeGenerator() {
+		generateCode("settlement.alipay", "order");
 	}
 	
 	/**

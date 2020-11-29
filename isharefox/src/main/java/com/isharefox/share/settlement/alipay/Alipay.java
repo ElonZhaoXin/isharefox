@@ -305,7 +305,4 @@ public class Alipay {
 		
 	}
 	
-	
-
-	
 }
