@@ -1,6 +1,6 @@
-package com.isharefox.share.user.service;
+package com.isharefox.share.user.user.service;
 
-import com.isharefox.share.user.entity.User;
+import com.isharefox.share.user.user.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

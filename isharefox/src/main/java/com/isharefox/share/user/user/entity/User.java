@@ -1,4 +1,4 @@
-package com.isharefox.share.user.entity;
+package com.isharefox.share.user.user.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;

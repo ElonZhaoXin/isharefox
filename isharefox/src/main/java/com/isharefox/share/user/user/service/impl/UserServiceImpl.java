@@ -1,8 +1,8 @@
-package com.isharefox.share.user.service.impl;
+package com.isharefox.share.user.user.service.impl;
 
-import com.isharefox.share.user.entity.User;
-import com.isharefox.share.user.mapper.UserMapper;
-import com.isharefox.share.user.service.IUserService;
+import com.isharefox.share.user.user.entity.User;
+import com.isharefox.share.user.user.mapper.UserMapper;
+import com.isharefox.share.user.user.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.isharefox.share.user.mapper;
+package com.isharefox.share.user.user.mapper;
 
-import com.isharefox.share.user.entity.User;
+import com.isharefox.share.user.user.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

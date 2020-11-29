@@ -30,7 +30,7 @@ public class MybatisPlusCodeGenerator {
 	 */
 	@Test
 	public void testUserCodeGenerator() {
-		generateCode("user", "user");
+		generateCode("user.user", "user");
 	}
 	
 

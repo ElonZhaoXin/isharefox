@@ -1,4 +1,4 @@
-package com.isharefox.share.user.controller;
+package com.isharefox.share.user.user.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-11-29
  */
 @RestController
-@RequestMapping("/user/user")
+@RequestMapping("/user.user/user")
 public class UserController {
 
 }
