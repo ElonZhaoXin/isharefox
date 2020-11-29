@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * 支付服务配置类
  */
 @Configuration
-@EnableConfigurationProperties(AlipayProperties.class)
+@EnableConfigurationProperties({AlipayProperties.class})
 @AllArgsConstructor
 public class PayConfig {
 

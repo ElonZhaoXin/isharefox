@@ -1,20 +1,37 @@
 package com.isharefox.share.web.conf;
 
+import ch.mfrey.thymeleaf.extras.with.WithDialect;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
+import com.isharefox.share.web.property.AlipayProperties;
+import com.isharefox.share.web.property.EnvProperties;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@EnableConfigurationProperties({EnvProperties.class})
 public class IShareFoxConfig {
     @Bean
     public ModelMapper modelMapper() {
         //对象转换工具
         return new ModelMapper();
+    }
+
+    @Bean
+    public LayoutDialect layoutDialect() {
+        //thymeleaf LayoutDialect  页面模板导入
+        //https://ultraq.github.io/thymeleaf-layout-dialect/getting-started/
+        return new LayoutDialect();
+    }
+    @Bean
+    public WithDialect withDialect() {
+        return new WithDialect();
     }
 
     @Bean

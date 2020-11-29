@@ -14,4 +14,8 @@ public class ShiroUtil {
     public static User currentUser() {
         return (User)SecurityUtils.getSubject().getPrincipal();
     }
+
+    public static void saveCurrentUser(Object user) {
+        SecurityUtils.getSubject().getSession().setAttribute("user", user);
+    }
 }

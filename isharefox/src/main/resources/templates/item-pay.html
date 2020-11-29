@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="resource">share resouce</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+
+<body>
+<script src="/layui/layui.all.js"></script>
+
+<div class="layui-row layui-col-space10">
+    <div class="layui-col-md4">
+        <table>
+            <tr>
+                <td>
+                    <th:block>
+                        <img th:src="${page.qrCodeBase64}"/>
+                    </th:block>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    打开手机支付宝<br>
+                    扫一扫付款获取密码
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

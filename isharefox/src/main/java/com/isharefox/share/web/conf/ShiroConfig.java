@@ -82,13 +82,14 @@ public class ShiroConfig {
         // filterChainDefinitionMap.put("/api/**", "anon");
         // 登录接口放开
         //用户路径下，需要登录
-        filterChainDefinitionMap.put("/login", "authc");
-        filterChainDefinitionMap.put("/user/**", "anon");
+
         //订单支付路径下，不需要登陆
-        filterChainDefinitionMap.put("/order/**", "anon");
+        filterChainDefinitionMap.put("/item/**", "anon");
+        filterChainDefinitionMap.put("/login", "authc");
+        filterChainDefinitionMap.put("/user/**", "authc");
         filterChainDefinitionMap.put("/logout", "logout");
-        //其他路径，需要登录
         filterChainDefinitionMap.put("/**", "anon");
+        //其他路径，需要登录
         factoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         //设置登录页面，未登录自动跳转到该页面
         factoryBean.setLoginUrl("/login");

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.isharefox.share.user.regist.entity.User;
 import com.isharefox.share.user.regist.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -39,6 +40,7 @@ public class CustomRealm extends AuthorizingRealm implements InitializingBean {
         }
         if (ObjectUtils.nullSafeEquals(user.getPassword(), new String(token.getPassword()))) {
             log.info("==================认证成功,结束===================");
+            ShiroUtil.saveCurrentUser(user);
             return new SimpleAuthenticationInfo(user, token.getPassword(), getName());
         } else {
             log.error("用户登录失败");

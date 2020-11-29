@@ -7,7 +7,9 @@ spring:
     url: jdbc:mysql://116.196.91.182:13306/isharefox?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
     password: admin@tff
-
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 
 logging:
   group:
@@ -22,3 +24,6 @@ alipay:
   certPath: F:\isharefox\cert\appCertPublicKey_2016091700535551.crt
   alipayPublicCertPath: F:\isharefox\cert\alipayCertPublicKey_RSA2.crt
   rootCertPath: F:\isharefox\cert\alipayRootCert.crt
+
+env:
+  domain: http://localhost:8080
