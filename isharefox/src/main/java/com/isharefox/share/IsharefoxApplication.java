@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.isharefox.share.*.orm.mapper")
+@MapperScan("com.isharefox.share.*.mapper")
 public class IsharefoxApplication {
 
 	public static void main(String[] args) {
