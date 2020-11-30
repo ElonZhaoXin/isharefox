@@ -39,7 +39,7 @@ public class MybatisPlusCodeGenerator {
 	 */
 	@Test
 	public void testTradeCodeGenerator() {
-		generateCode("trade", "user_account");
+		generateCode("user.account", "user_account");
 	}
 	
 

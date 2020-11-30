@@ -1,6 +1,6 @@
-package com.isharefox.share.trade.service;
+package com.isharefox.share.user.account.service;
 
-import com.isharefox.share.trade.entity.UserAccount;
+import com.isharefox.share.user.account.entity.UserAccount;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-29
+ * @since 2020-11-30
  */
 public interface IUserAccountService extends IService<UserAccount> {
 

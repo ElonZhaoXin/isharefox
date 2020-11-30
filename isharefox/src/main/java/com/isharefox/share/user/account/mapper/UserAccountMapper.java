@@ -1,6 +1,6 @@
-package com.isharefox.share.trade.mapper;
+package com.isharefox.share.user.account.mapper;
 
-import com.isharefox.share.trade.entity.UserAccount;
+import com.isharefox.share.user.account.entity.UserAccount;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-29
+ * @since 2020-11-30
  */
 public interface UserAccountMapper extends BaseMapper<UserAccount> {
 

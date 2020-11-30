@@ -1,4 +1,4 @@
-package com.isharefox.share.trade.controller;
+package com.isharefox.share.user.account.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-29
+ * @since 2020-11-30
  */
 @RestController
-@RequestMapping("/trade/user-account")
+@RequestMapping("/user.account/user-account")
 public class UserAccountController {
 
 }
