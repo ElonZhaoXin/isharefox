@@ -1,8 +1,6 @@
 package com.isharefox.share.settlement.alipay.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,16 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/settlement.alipay/order")
 public class OrderController {
 	
+	/**
+	 * alipay 当面付，异步回调
+	 * @param order
+	 */
 	@PostMapping("/callback")
 	public void faceToFaceCallback(OrderDTO order) {
 		System.out.println("get callback");
 		System.out.println(order.toString());
-	}
-	
-	@PostMapping("/callbacktest")
-	public void faceToFaceCallback(HttpServletRequest order) {
-		System.out.println("get callback");
-		System.out.println(order.getParameter("out_trade_no"));
 	}
 }
 
