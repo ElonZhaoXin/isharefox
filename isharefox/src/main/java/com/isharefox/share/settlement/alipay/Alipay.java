@@ -40,11 +40,12 @@ public class Alipay {
 //        config.alipayRootCertPath = "<-- 请填写您的支付宝根证书文件路径，例如：/foo/alipayRootCert.crt -->";
 
         //注：如果采用非证书模式，则无需赋值上面的三个证书路径，改为赋值如下的支付宝公钥字符串即可
-         config.alipayPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3vJKoHORp8CwzfeNhS9GO066KECVj3JFwNGDLP6VJZ05kZl3HZ11eu/xmSmfN9pbOHyqxwycj+ditgSKV0JorSvkf3jHSmKbCNrfmjfWucxSYyyszRCxlcds6RDmM+fjBAMZ0O3hDn8A92VVphGhZ/mQ4efGtjHxAw76WKYU/3cMTDswaX1ujAo9Tyq05qFbNifDwDfAz6LI1tv4UqvXf5QuJF9BbxK/DEXF3tIGr2xS2HsGqtkRgxS+9hXWKjciWjC5ig351PYSTtT8R4dfyAY/Qj1ptwkeFuo9lJ1oFgFkdYaAR0pIZ9tmZzLe5iIZhmzhGapV6OKAPpsjWTRQ3wIDAQAB";
+        config.alipayPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3vJKoHORp8CwzfeNhS9GO066KECVj3JFwNGDLP6VJZ05kZl3HZ11eu/xmSmfN9pbOHyqxwycj+ditgSKV0JorSvkf3jHSmKbCNrfmjfWucxSYyyszRCxlcds6RDmM+fjBAMZ0O3hDn8A92VVphGhZ/mQ4efGtjHxAw76WKYU/3cMTDswaX1ujAo9Tyq05qFbNifDwDfAz6LI1tv4UqvXf5QuJF9BbxK/DEXF3tIGr2xS2HsGqtkRgxS+9hXWKjciWjC5ig351PYSTtT8R4dfyAY/Qj1ptwkeFuo9lJ1oFgFkdYaAR0pIZ9tmZzLe5iIZhmzhGapV6OKAPpsjWTRQ3wIDAQAB";
 
         //可设置异步通知接收服务地址（可选）
-        config.notifyUrl = "https://www.ishare.com/share/alipay/facetoface/callback -->";
-
+//        config.notifyUrl = "https://www.ishare.com/share/alipay/facetoface/callback";
+        config.notifyUrl = "http://222.129.54.196/share/alipay/facetoface/callback";
+        
         //可设置AES密钥，调用AES加解密相关接口时需要（可选）
 //        config.encryptKey = "<-- 请填写您的AES密钥，例如：aa4BtZ4tspm2wnXLb1ThQA== -->";
 

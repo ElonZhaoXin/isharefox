@@ -167,4 +167,18 @@ public class Order extends Model<Order> {
         return null;
     }
 
+
+	@Override
+	public String toString() {
+		return "Order [userId=" + userId + ", notifyTime=" + notifyTime + ", notifyType=" + notifyType + ", tradeNo="
+				+ tradeNo + ", appId=" + appId + ", outTradeNo=" + outTradeNo + ", outBizNo=" + outBizNo + ", buyerId="
+				+ buyerId + ", buyerLogonId=" + buyerLogonId + ", sellerId=" + sellerId + ", sellerEmail=" + sellerEmail
+				+ ", tradeStatus=" + tradeStatus + ", totalAmount=" + totalAmount + ", receiptAmount=" + receiptAmount
+				+ ", invoiceAmount=" + invoiceAmount + ", buyerPayAmount=" + buyerPayAmount + ", pointAmount="
+				+ pointAmount + ", refundFee=" + refundFee + ", sendBackFee=" + sendBackFee + ", subject=" + subject
+				+ ", body=" + body + ", gmtCreate=" + gmtCreate + ", gmtPayment=" + gmtPayment + ", gmtRefund="
+				+ gmtRefund + ", gmtClose=" + gmtClose + ", fundBillList=" + fundBillList + ", createTime=" + createTime
+				+ ", updateTime=" + updateTime + "]";
+	}
+
 }
