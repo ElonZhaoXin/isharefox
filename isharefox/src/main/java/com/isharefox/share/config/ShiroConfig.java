@@ -79,17 +79,18 @@ public class ShiroConfig {
         // 自定义url规则使用LinkedHashMap有序Map
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>(16);
 
+        filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/layui/**", "anon");
-        filterChainDefinitionMap.put("favicon.ico", "anon");
+        filterChainDefinitionMap.put("/favicon.ico", "anon");
         //订单支付路径下，不需要登陆
         filterChainDefinitionMap.put("/item/**", "anon");
         //登录页面
         filterChainDefinitionMap.put("/login**", "anon");
         //注册
-        filterChainDefinitionMap.put("/register", "anon");
+        filterChainDefinitionMap.put("/register**", "anon");
         //用户登录
         filterChainDefinitionMap.put("/user/**", "authc");
         filterChainDefinitionMap.put("/logout", "logout");
