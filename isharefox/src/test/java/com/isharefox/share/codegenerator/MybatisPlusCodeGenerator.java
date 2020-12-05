@@ -89,7 +89,7 @@ public class MybatisPlusCodeGenerator {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setSuperEntityClass("com.isharefox.share.kernel.BaseEntity");
-        strategy.setSuperEntityColumns("id", "status", "createTime", "updateTime");
+        strategy.setSuperEntityColumns("id", "status", "create_time", "update_time");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类

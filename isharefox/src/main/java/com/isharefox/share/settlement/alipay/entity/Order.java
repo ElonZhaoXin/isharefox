@@ -152,16 +152,6 @@ public class Order extends BaseEntity<Order> {
      */
     private String fundBillList;
 
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 最后更新时间
-     */
-    private LocalDateTime updateTime;
-
 
     @Override
     protected Serializable pkVal() {

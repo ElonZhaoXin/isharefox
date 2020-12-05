@@ -6,7 +6,6 @@ package com.isharefox.share.kernel;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.isharefox.share.item.entity.Item;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

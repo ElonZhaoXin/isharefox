@@ -1,7 +1,6 @@
 package com.isharefox.share.user.account.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.time.LocalDateTime;
 import com.isharefox.share.kernel.BaseEntity;
 import java.io.Serializable;
 import lombok.Data;
@@ -35,16 +34,6 @@ public class UserAccount extends BaseEntity<UserAccount> {
      * 1-支付宝：手机号/账号；
      */
     private String accountNo;
-
-    /**
-     * 创建时间
-     */
-    private LocalDateTime createTime;
-
-    /**
-     * 最后更新时间
-     */
-    private LocalDateTime updateTime;
 
 
     @Override

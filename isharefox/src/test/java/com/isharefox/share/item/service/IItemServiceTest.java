@@ -38,9 +38,7 @@ class IItemServiceTest {
 		item.setUserId("123");
 		item.setZipPwd("345");
 		item.setAmount(BigDecimal.valueOf(12312));
-		item.setResourceId("123");
-		item.setCreateTime(LocalDateTime.now());
-		item.setUpdateTime(LocalDateTime.now());
+		item.setResourceId("1234");
 		
 		Assert.assertEquals(true, item.insert());
 		
