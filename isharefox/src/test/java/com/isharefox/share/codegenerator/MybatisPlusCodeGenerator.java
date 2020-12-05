@@ -77,18 +77,24 @@ public class MybatisPlusCodeGenerator {
 	    PackageConfig pc = new PackageConfig();
         pc.setModuleName(moduleName);
         pc.setParent("com.isharefox.share");
+//        pc.setController("controller");
+//        pc.setEntity("domain");
+//        pc.setMapper("mapper");
+//        pc.setService("service");
+//        pc.setServiceImpl("service.impl");
+//        pc.setXml("mapper.xml");
 	    
 	    //4.策略配置
 	    StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-//        strategy.setSuperEntityClass("com.isharefox.share.common.BaseEntity");
+        strategy.setSuperEntityClass("com.isharefox.share.kernel.BaseEntity");
+        strategy.setSuperEntityColumns("id", "status", "createTime", "updateTime");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
 //        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id", "status", "createTime", "updateTime");
         strategy.setInclude(tableName); 
         strategy.setControllerMappingHyphenStyle(true);
 //        strategy.setTablePrefix(pc.getModuleName() + "_");

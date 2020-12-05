@@ -3,6 +3,7 @@ package com.isharefox.share.item.entity;
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
+import com.isharefox.share.kernel.BaseEntity;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,11 +14,11 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Item extends Model<Item> {
+@EqualsAndHashCode(callSuper = true)
+public class Item extends BaseEntity<Item> {
 
     private static final long serialVersionUID = 1L;
 

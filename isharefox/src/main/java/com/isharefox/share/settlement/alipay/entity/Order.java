@@ -3,6 +3,7 @@ package com.isharefox.share.settlement.alipay.entity;
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
+import com.isharefox.share.kernel.BaseEntity;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,11 +14,11 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Order extends Model<Order> {
+@EqualsAndHashCode(callSuper = true)
+public class Order extends BaseEntity<Order> {
 
     private static final long serialVersionUID = 1L;
 
@@ -166,19 +167,5 @@ public class Order extends Model<Order> {
     protected Serializable pkVal() {
         return null;
     }
-
-
-	@Override
-	public String toString() {
-		return "Order [userId=" + userId + ", notifyTime=" + notifyTime + ", notifyType=" + notifyType + ", tradeNo="
-				+ tradeNo + ", appId=" + appId + ", outTradeNo=" + outTradeNo + ", outBizNo=" + outBizNo + ", buyerId="
-				+ buyerId + ", buyerLogonId=" + buyerLogonId + ", sellerId=" + sellerId + ", sellerEmail=" + sellerEmail
-				+ ", tradeStatus=" + tradeStatus + ", totalAmount=" + totalAmount + ", receiptAmount=" + receiptAmount
-				+ ", invoiceAmount=" + invoiceAmount + ", buyerPayAmount=" + buyerPayAmount + ", pointAmount="
-				+ pointAmount + ", refundFee=" + refundFee + ", sendBackFee=" + sendBackFee + ", subject=" + subject
-				+ ", body=" + body + ", gmtCreate=" + gmtCreate + ", gmtPayment=" + gmtPayment + ", gmtRefund="
-				+ gmtRefund + ", gmtClose=" + gmtClose + ", fundBillList=" + fundBillList + ", createTime=" + createTime
-				+ ", updateTime=" + updateTime + "]";
-	}
 
 }

@@ -1,11 +1,9 @@
 package com.isharefox.share.settlement.alipay.controller;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-
 
 /**
  * <p>
@@ -13,20 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-05
  */
 @RestController
 @RequestMapping("/settlement.alipay/order")
 public class OrderController {
-	
-	/**
-	 * alipay 当面付，异步回调
-	 * @param order
-	 */
-	@PostMapping("/callback")
-	public void faceToFaceCallback(OrderDTO order) {
-		System.out.println("get callback");
-		System.out.println(order.toString());
-	}
+
 }
 

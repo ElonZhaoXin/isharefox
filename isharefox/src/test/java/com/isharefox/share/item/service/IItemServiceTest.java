@@ -1,6 +1,9 @@
 package com.isharefox.share.item.service;
 
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +30,20 @@ class IItemServiceTest {
 		Item item = new Item();
 		Assert.assertEquals(0, item.selectAll().size());
 				
+	}
+	
+	@Test
+	public void testSave() {
+		Item item = new Item();
+		item.setUserId("123");
+		item.setZipPwd("345");
+		item.setAmount(BigDecimal.valueOf(12312));
+		item.setResourceId("123");
+		item.setCreateTime(LocalDateTime.now());
+		item.setUpdateTime(LocalDateTime.now());
+		
+		Assert.assertEquals(true, item.insert());
+		
 	}
 
 }

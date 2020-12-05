@@ -13,7 +13,6 @@ import com.alipay.easysdk.factory.Factory.Payment;
 import com.alipay.easysdk.kernel.Config;
 import com.alipay.easysdk.kernel.util.ResponseChecker;
 import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse;
-import com.isharefox.share.settlement.alipay.entity.Order;
 
 /**
  * @author zhaoxin
@@ -92,16 +91,16 @@ public class Alipay {
 		 * 从http的form表单形式获取
 		 * @return
 		 */
-		public static Order getAsyncNotification(Map<String, String> params) {
-			Order order = new Order();
-			try {
-				BeanUtils.populate(order, params);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return order;
-		}
+//		public static Order getAsyncNotification(Map<String, String> params) {
+//			Order order = new Order();
+//			try {
+//				BeanUtils.populate(order, params);
+//			} catch (IllegalAccessException | InvocationTargetException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return order;
+//		}
 		
 	}
 	

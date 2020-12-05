@@ -2,6 +2,7 @@ package com.isharefox.share.user.account.entity;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
+import com.isharefox.share.kernel.BaseEntity;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,11 +13,11 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class UserAccount extends Model<UserAccount> {
+@EqualsAndHashCode(callSuper = true)
+public class UserAccount extends BaseEntity<UserAccount> {
 
     private static final long serialVersionUID = 1L;
 
