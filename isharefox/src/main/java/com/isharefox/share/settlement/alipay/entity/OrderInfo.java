@@ -152,6 +152,11 @@ public class OrderInfo extends BaseEntity<OrderInfo> {
      */
     private String fundBillList;
 
+    /**
+     * 资源编号
+     */
+    private String resourceId;
+
 
     @Override
     protected Serializable pkVal() {

@@ -3,7 +3,6 @@
  */
 package com.isharefox.share.settlement.alipay;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,6 @@ import com.alipay.easysdk.kernel.Config;
 import com.alipay.easysdk.kernel.util.ResponseChecker;
 import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse;
 import com.baomidou.mybatisplus.core.toolkit.BeanUtils;
-import com.isharefox.share.kernel.util.ConvertUtils;
 import com.isharefox.share.settlement.alipay.controller.OrderDTO;
 
 /**

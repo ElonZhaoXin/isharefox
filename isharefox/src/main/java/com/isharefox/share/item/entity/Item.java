@@ -46,6 +46,11 @@ public class Item extends BaseEntity<Item> {
      */
     private String userId;
 
+    /**
+     * 资源存放地址，例如百度网盘url
+     */
+    private String url;
+
 
     @Override
     protected Serializable pkVal() {
