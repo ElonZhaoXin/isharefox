@@ -4,15 +4,18 @@
 package com.isharefox.share.settlement.alipay;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.beanutils.BeanUtils;
 
 import com.alipay.easysdk.factory.Factory;
 import com.alipay.easysdk.factory.Factory.Payment;
 import com.alipay.easysdk.kernel.Config;
 import com.alipay.easysdk.kernel.util.ResponseChecker;
 import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse;
+import com.baomidou.mybatisplus.core.toolkit.BeanUtils;
+import com.isharefox.share.kernel.util.ConvertUtils;
+import com.isharefox.share.settlement.alipay.controller.OrderDTO;
 
 /**
  * @author zhaoxin
@@ -51,6 +54,8 @@ public class Alipay {
         return config;
     }
 	
+	
+	
 	/**
 	 * 当面付相关AP封装
 	 * @author zhaoxin
@@ -87,20 +92,24 @@ public class Alipay {
 		}
 		
 		/**
-		 * 处理支付宝异步通知回来的内容
-		 * 从http的form表单形式获取
+		 * 当面付异步通知验签
+		 * @param order
 		 * @return
 		 */
-//		public static Order getAsyncNotification(Map<String, String> params) {
-//			Order order = new Order();
-//			try {
-//				BeanUtils.populate(order, params);
-//			} catch (IllegalAccessException | InvocationTargetException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			return order;
-//		}
+		public static boolean verifyNotify(OrderDTO order) {
+			Map<String, Object> srcParams = BeanUtils.beanToMap(order);
+			Map<String, String> parameters = new HashMap<>();
+			srcParams.forEach((key, value)  -> {
+				parameters.put(key, (String) value);
+			});
+			try {
+				Factory.Payment.Common().verifyNotify(parameters);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+		}
 		
 	}
 	

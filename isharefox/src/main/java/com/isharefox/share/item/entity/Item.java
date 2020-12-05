@@ -1,6 +1,7 @@
 package com.isharefox.share.item.entity;
 
 import java.math.BigDecimal;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.isharefox.share.kernel.BaseEntity;
 import java.io.Serializable;
 import lombok.Data;

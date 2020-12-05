@@ -22,7 +22,7 @@ public class MybatisPlusCodeGenerator {
 //		testItemCodeGenerator();
 //		testUserCodeGenerator();
 //		testTradeCodeGenerator();
-		testOrderCodeGenerator();
+//		testOrderCodeGenerator();
 	}
 	
 	/**
