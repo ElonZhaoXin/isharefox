@@ -32,6 +32,7 @@ CREATE TABLE `item` (
   `status` varchar(1) NOT NULL COMMENT '资源状态，0-创建，未发布；1=上架，正常售卖；2-下架',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  `url` varchar(45) DEFAULT NULL COMMENT '资源存放地址，例如百度网盘url',
   PRIMARY KEY (`id`),
   UNIQUE KEY `resource_id_UNIQUE` (`resource_id`),
   KEY `UK` (`resource_id`,`user_id`) COMMENT '联合索引，唯一确认一个支付资源情况'
@@ -76,6 +77,7 @@ CREATE TABLE `order_info` (
   `status` varchar(1) NOT NULL COMMENT '0-异常；1-正常',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` datetime NOT NULL COMMENT '最后更新时间',
+  `resource_id` varchar(4) NOT NULL COMMENT '资源编号',
   PRIMARY KEY (`id`),
   UNIQUE KEY `out_trade_no_UNIQUE` (`out_trade_no`),
   KEY `UK` (`out_trade_no`) COMMENT '订单编号',
@@ -136,4 +138,4 @@ CREATE TABLE `user_account` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-05 21:46:56
+-- Dump completed on 2020-12-05 23:34:28
