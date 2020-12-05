@@ -1,6 +1,6 @@
 package com.isharefox.share.settlement.alipay.service;
 
-import com.isharefox.share.settlement.alipay.entity.Order;
+import com.isharefox.share.settlement.alipay.entity.OrderInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author zhaoxin
  * @since 2020-12-05
  */
-public interface IOrderService extends IService<Order> {
+public interface IOrderInfoService extends IService<OrderInfo> {
 
 }

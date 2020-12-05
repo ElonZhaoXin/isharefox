@@ -17,10 +17,17 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 @SpringBootTest
 public class MybatisPlusCodeGenerator {
 	
+	@Test
+	public void test() {
+//		testItemCodeGenerator();
+//		testUserCodeGenerator();
+//		testTradeCodeGenerator();
+		testOrderCodeGenerator();
+	}
+	
 	/**
 	 * 商品模块
 	 */
-	@Test
 	public void testItemCodeGenerator() {
 		generateCode("item", "item");
 	}
@@ -28,7 +35,6 @@ public class MybatisPlusCodeGenerator {
 	/**
 	 * 用户模块
 	 */
-	@Test
 	public void testUserCodeGenerator() {
 		generateCode("user.user", "user");
 	}
@@ -37,7 +43,6 @@ public class MybatisPlusCodeGenerator {
 	/**
 	 * 交易模块
 	 */
-	@Test
 	public void testTradeCodeGenerator() {
 		generateCode("user.account", "user_account");
 	}
@@ -46,9 +51,8 @@ public class MybatisPlusCodeGenerator {
 	/**
 	 * 阿里结算支付模块
 	 */
-	@Test
 	public void testOrderCodeGenerator() {
-		generateCode("settlement.alipay", "order");
+		generateCode("settlement.alipay", "order_info");
 	}
 	
 	/**

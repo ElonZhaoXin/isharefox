@@ -28,7 +28,7 @@ public class ConvertUtils {
 		Map<String, Object> srcMap = BeanUtils.beanToMap(src);
 		Map<String, Object> targetMap = new HashMap<>();
 		srcMap.forEach((key, value) -> {
-			String newkey = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, key);
+			String newkey = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, key).trim();
 			targetMap.put(newkey, value);
 		});
 		T target = BeanUtils.mapToBean(targetMap, targetClass);

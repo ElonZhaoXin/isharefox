@@ -1,6 +1,6 @@
 package com.isharefox.share.settlement.alipay.mapper;
 
-import com.isharefox.share.settlement.alipay.entity.Order;
+import com.isharefox.share.settlement.alipay.entity.OrderInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author zhaoxin
  * @since 2020-12-05
  */
-public interface OrderMapper extends BaseMapper<Order> {
+public interface OrderInfoMapper extends BaseMapper<OrderInfo> {
 
 }
