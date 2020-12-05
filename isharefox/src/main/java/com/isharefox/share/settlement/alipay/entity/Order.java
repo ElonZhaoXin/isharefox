@@ -1,7 +1,9 @@
 package com.isharefox.share.settlement.alipay.entity;
 
 import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
@@ -13,13 +15,16 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Order extends Model<Order> {
 
     private static final long serialVersionUID = 1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 客户编号
@@ -152,6 +157,11 @@ public class Order extends Model<Order> {
     private String fundBillList;
 
     /**
+     * 0-异常；1-正常
+     */
+    private String status;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;
@@ -164,7 +174,7 @@ public class Order extends Model<Order> {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
 }

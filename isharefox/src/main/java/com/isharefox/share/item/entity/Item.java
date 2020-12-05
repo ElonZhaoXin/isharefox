@@ -1,7 +1,9 @@
 package com.isharefox.share.item.entity;
 
 import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
@@ -13,13 +15,16 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Item extends Model<Item> {
 
     private static final long serialVersionUID = 1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 资源编号，在支付URL中：http://isharefox.com/share/userId/resourceId
@@ -47,6 +52,11 @@ public class Item extends Model<Item> {
     private String userId;
 
     /**
+     * 资源状态，0-创建，未发布；1=上架，正常售卖；2-下架
+     */
+    private String status;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;
@@ -59,7 +69,7 @@ public class Item extends Model<Item> {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
 }

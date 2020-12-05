@@ -1,6 +1,8 @@
 package com.isharefox.share.user.account.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
@@ -12,13 +14,16 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhaoxin
- * @since 2020-11-30
+ * @since 2020-12-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class UserAccount extends Model<UserAccount> {
 
     private static final long serialVersionUID = 1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 客户编号
@@ -36,6 +41,11 @@ public class UserAccount extends Model<UserAccount> {
     private String accountNo;
 
     /**
+     * 0-异常；1-正常
+     */
+    private String status;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;
@@ -48,7 +58,7 @@ public class UserAccount extends Model<UserAccount> {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
 }
