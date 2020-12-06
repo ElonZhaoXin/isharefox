@@ -48,7 +48,7 @@ public class ItemController {
         IPage<ItemDto> itemDtoIPage = page.convert((item) -> {
             ItemDto itemDto = modelMapper.map(item, ItemDto.class);
             //设置商品展示路径
-            itemDto.setLinkUrl(envProperties.getDomain() + "/item/" + item.getUserId());
+            itemDto.setLinkUrl(envProperties.getDomain() + "/item/" + item.getResourceId());
             return itemDto;
         });
         return new GenericItemDtoResponse(itemDtoIPage);
@@ -61,7 +61,7 @@ public class ItemController {
         item.setUserId(ShiroUtil.currentUser().getUserId());
 
         Item maxItem = iItemService.getOne(new QueryWrapper<Item>().lambda().orderByDesc(Item::getId).last("limit 1"));
-        item.setResourceId(IdGeneratoer.increment32Num(maxItem != null ? maxItem.getUserId() : null));
+        item.setResourceId(IdGeneratoer.increment32Num(maxItem != null ? maxItem.getResourceId() : null));
         item.setCreateTime(LocalDateTime.now());
         item.setUpdateTime(LocalDateTime.now());
         boolean result = iItemService.save(item);

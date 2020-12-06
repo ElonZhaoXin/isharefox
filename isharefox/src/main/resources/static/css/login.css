@@ -1,40 +1,99 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
+    background-image: url("/images/bg.jpg");
+    height: 100%;
+    width: 100%;
 }
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+#container {
+    height: 100%;
+    width: 100%;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
+
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 1000px #fff;
+    background-color: transparent;
 }
-.form-signin .checkbox {
-  font-weight: normal;
+
+.admin-login-background {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -150px;
+    margin-top: -100px;
 }
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 40px
 }
-.form-signin .form-control:focus {
-  z-index: 2;
+
+.admin-input {
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    height: 50px;
+    width: 300px;
+    padding-bottom: 0px;
 }
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+
+.admin-input::-webkit-input-placeholder {
+    color: #a78369
 }
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+
+.layui-icon-username {
+    color: #a78369 !important;
+}
+
+.layui-icon-username:hover {
+    color: #9dadce !important;
+}
+
+.layui-icon-password {
+    color: #a78369 !important;
+}
+
+.layui-icon-password:hover {
+    color: #9dadce !important;
+}
+
+.admin-input-username {
+    border-top-style: solid;
+    border-radius: 10px 10px 0 0;
+}
+
+.admin-input-verify {
+    border-radius: 0 0 10px 10px;
+}
+
+.admin-button {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #a78369;
+    border: 1px solid #d8b29f
+}
+
+.admin-icon {
+    margin-left: 260px;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+i {
+    position: absolute;
+}
+
+.admin-captcha {
+    position: absolute;
+    margin-left: 205px;
+    margin-top: -35px;
 }

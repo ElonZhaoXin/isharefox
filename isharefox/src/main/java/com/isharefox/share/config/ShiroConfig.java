@@ -85,6 +85,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/layui/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
+        filterChainDefinitionMap.put("/kaptcha", "anon");
         //订单支付路径下，不需要登陆
         filterChainDefinitionMap.put("/item/**", "anon");
         //登录页面

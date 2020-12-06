@@ -2,6 +2,7 @@ package com.isharefox.share.common.exception;
 import com.isharefox.share.common.api.BaseResponse;
 import com.isharefox.share.common.api.ResultCode;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.AuthenticationException;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -27,6 +28,20 @@ import java.util.Set;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    /**
+     * 登录失败异常处理
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    public BaseResponse handleError(AuthenticationException e) {
+        log.error("shiro login err", e);
+        return BaseResponse
+                .builder()
+                .code(ResultCode.UN_AUTHORIZED)
+                .message(e.getMessage())
+                .build();
+    }
+
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public BaseResponse handleError(MissingServletRequestParameterException e) {
