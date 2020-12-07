@@ -48,7 +48,7 @@ public class ItemController {
         IPage<ItemDto> itemDtoIPage = page.convert((item) -> {
             ItemDto itemDto = modelMapper.map(item, ItemDto.class);
             //设置商品展示路径
-            itemDto.setLinkUrl(envProperties.getDomain() + "/item/" + item.getResourceId());
+            itemDto.setLinkUrl(envProperties.getDomain() + "/share/" + item.getResourceId());
             return itemDto;
         });
         return new GenericItemDtoResponse(itemDtoIPage);

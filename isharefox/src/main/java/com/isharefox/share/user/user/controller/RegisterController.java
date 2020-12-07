@@ -1,4 +1,4 @@
-package com.isharefox.share.user.register.controller;
+package com.isharefox.share.user.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
@@ -7,9 +7,10 @@ import com.isharefox.share.auth.ShiroUtil;
 import com.isharefox.share.common.api.BaseResponse;
 import com.isharefox.share.common.api.ResultCode;
 import com.isharefox.share.common.util.IdGeneratoer;
-import com.isharefox.share.user.register.dto.KaptchaDtoResponse;
-import com.isharefox.share.user.register.dto.UserLoginDto;
-import com.isharefox.share.user.register.dto.UserRegistDto;
+import com.isharefox.share.common.util.ImageBase64Util;
+import com.isharefox.share.user.user.dto.KaptchaDtoResponse;
+import com.isharefox.share.user.user.dto.UserLoginDto;
+import com.isharefox.share.user.user.dto.UserRegistDto;
 import com.isharefox.share.user.user.entity.User;
 import com.isharefox.share.user.user.service.IUserService;
 import io.swagger.annotations.Api;
@@ -25,12 +26,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Base64;
 
 
 @Api(value = "登录注册服务")
@@ -68,8 +65,6 @@ public class RegisterController {
         User maxUser = userService.getOne(new QueryWrapper<User>().lambda().orderByDesc(User::getId).last("limit 1"));
         newUser.setUserId(IdGeneratoer.increment32Num(maxUser != null ? maxUser.getUserId() : null));
         newUser.setStatus("1");
-        newUser.setCreateTime(LocalDateTime.now());
-        newUser.setUpdateTime(LocalDateTime.now());
 
         boolean success = userService.save(newUser);
         return BaseResponse.builder()
@@ -88,9 +83,6 @@ public class RegisterController {
         String kaptcha = defaultKaptcha.createText();
         ShiroUtil.putKaptcha(kaptcha);
         BufferedImage image = defaultKaptcha.createImage(kaptcha);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", byteArrayOutputStream);
-        String base64Img = Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
-        return new KaptchaDtoResponse("data:image/png;base64," + base64Img);
+        return new KaptchaDtoResponse(ImageBase64Util.image2Base64(image));
     }
 }

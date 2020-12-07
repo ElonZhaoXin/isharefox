@@ -1,4 +1,4 @@
-package com.isharefox.share.user.register.dto;
+package com.isharefox.share.user.user.dto;
 import lombok.Data;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

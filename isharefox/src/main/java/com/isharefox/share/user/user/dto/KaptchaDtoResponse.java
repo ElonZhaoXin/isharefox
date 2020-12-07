@@ -1,4 +1,4 @@
-package com.isharefox.share.user.register.dto;
+package com.isharefox.share.user.user.dto;
 
 import com.isharefox.share.common.api.BaseResponse;
 import lombok.*;

@@ -88,6 +88,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/kaptcha", "anon");
         //订单支付路径下，不需要登陆
         filterChainDefinitionMap.put("/item/**", "anon");
+        filterChainDefinitionMap.put("/share/**", "anon");
+        //支付宝回调
+        filterChainDefinitionMap.put("/settlement/alipay/order/**", "anon");
+
         //登录页面
         filterChainDefinitionMap.put("/login**", "anon");
         //注册

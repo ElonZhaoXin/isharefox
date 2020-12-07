@@ -23,7 +23,7 @@ layui.define(['layer', 'form'], function (exports) {
     form.on('submit(submit)', function (data) {
         var index = layer.load();
         $.ajax({
-            url: "/user/register",
+            url: "/register",
             type: "Post",
             dataType: "json",
             contentType: 'application/json',

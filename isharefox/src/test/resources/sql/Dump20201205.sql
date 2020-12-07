@@ -27,7 +27,7 @@ CREATE TABLE `item` (
   `resource_id` varchar(4) NOT NULL COMMENT '资源编号，在支付URL中：http://isharefox.com/share/userId/resourceId',
   `zip_pwd` varchar(6) NOT NULL COMMENT '解压密码',
   `description` varchar(60) DEFAULT NULL COMMENT '商品描述',
-  `amount` decimal(10,0) NOT NULL COMMENT '收费金额',
+  `amount` decimal(10,2) NOT NULL COMMENT '收费金额',
   `user_id` varchar(4) NOT NULL COMMENT '客户编号',
   `status` varchar(1) NOT NULL COMMENT '资源状态，0-创建，未发布；1=上架，正常售卖；2-下架',
   `create_time` datetime NOT NULL COMMENT '创建时间',

@@ -1,6 +1,7 @@
 package com.isharefox.share.settlement.alipay.controller;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import com.isharefox.share.settlement.alipay.mapper.OrderInfoMapper;
  */
 @RestController
 @RequestMapping("/settlement/alipay/order")
+@Slf4j
 public class OrderController {
 	
 	@Autowired
@@ -35,7 +37,7 @@ public class OrderController {
 	 */
 	@PostMapping("/callback")
 	public String faceToFaceCallback(OrderDTO orderDto) {
-		System.out.println("接收到alipay异步回调请求：" + orderDto.toString());
+		log.info("接收到alipay异步回调请求：{}", orderDto.toString());
 		boolean verifySuccess = Alipay.FaceToFace.verifyNotify(orderDto);
 		if(verifySuccess) {
 			OrderInfo order = ConvertUtils.lowerUnderScopeToLowerCamel(orderDto, OrderInfo.class);
