@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{lay-layout}"
+>
+<th:block layout:fragment="content">
+  <table id="items" class="layui-table" lay-size="lg" lay-filter="items"></table>
+
+  <script type="text/html" id="rowBar">
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="showCode">
+      <i class="layui-icon layui-icon-rmb"> 收款码</i>
+    </a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+  </script>
+</th:block>
+
+<th:block layout:fragment="js">
+  <script>
+    layui.config({
+      base: '/js/modules/user/item/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use('index'); //加载入口
+  </script>
+</th:block>
+</html>

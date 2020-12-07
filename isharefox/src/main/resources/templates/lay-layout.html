@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>isharefox</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">isharefox </div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/">首页</a></li>
+            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <!--<img src="http://t.cn/RCzsdCq" class="layui-nav-img">-->
+                    <p th:text="${session.user.email}"/>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a th:href="@{/logout}">注销</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">商品管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/user/item/list}">商品列表</a></dd>
+                        <dd><a th:href="@{/user/item/add}">新增商品</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <th:block layout:fragment="content"/>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © isharefox.com
+    </div>
+    <script th:src="@{/layui/layui.all.js}"></script>
+
+    <script>
+        /**
+         * 假如当前 Url 是 http// www. liangshunet.
+         * com/pub/item.aspx?t=osw7，则截取到的相对路径为：/pub/item.aspx。
+         * @returns
+         */
+        function GetUrlRelativePath() {
+            var url = document.location.toString();
+            var arrUrl = url.split("//");
+
+            var start = arrUrl[1].indexOf("/");
+            var relUrl = arrUrl[1].substring(start);// stop省略，截取从start开始到结尾的所有字符
+
+            if (relUrl.indexOf("?") != -1) {
+                relUrl = relUrl.split("?")[0];
+            }
+            return relUrl;
+        }
+
+        /**
+         * 选中菜单默认打开
+         * @returns
+         */
+        var $ = layui.$;
+        $(document).ready(function() {
+            var url = GetUrlRelativePath();
+            var patt1 = new RegExp(url);
+            //$(".layui-this").removeClass();
+            $(document.body).find('a').each(function(i, obj) {
+                var str = $(obj).attr('href');
+                if (patt1.test(str)) {
+                    $(obj).parent().addClass("layui-this");
+                }
+            });
+        });
+    </script>
+    <th:block layout:fragment="js"/>
+</div>
+</body>
+</html>

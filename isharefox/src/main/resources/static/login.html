@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>isharefox login</title>
+    <!-- Custom styles for this template -->
+    <link href="/css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+
+<div id="container">
+    <div></div>
+    <div class="admin-login-background">
+        <div class="admin-header">
+            <span>isharefox</span>
+        </div>
+        <form class="layui-form">
+            <div>
+                <i class="layui-icon layui-icon-username admin-icon"></i>
+                <input type="text" name="username" placeholder="请输入用户名" lay-verify="required|email" value="123@abc.com"  autocomplete="off" class="layui-input admin-input admin-input-username">
+            </div>
+            <div>
+                <i class="layui-icon layui-icon-password admin-icon"></i>
+                <input type="password" name="password" placeholder="请输入密码" value="123123" lay-verify="required"  autocomplete="off" class="layui-input admin-input">
+            </div>
+            <div>
+                <input type="text" name="kaptcha" placeholder="请输入验证码" autocomplete="off" lay-verify="required" class="layui-input admin-input admin-input-verify">
+                <img class="admin-captcha" width="90" id="kaptcha" lay-filter="kaptcha" height="30" src="">
+            </div>
+            <button class="layui-btn admin-button" lay-submit lay-filter="submit">登 陆</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="layui/layui.all.js"></script>
+
+<script>
+    layui.config({
+        base: 'js/modules/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use('login'); //加载入口
+</script>
+</body>
+</html>
