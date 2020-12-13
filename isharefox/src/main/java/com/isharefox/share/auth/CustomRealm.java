@@ -32,9 +32,9 @@ public class CustomRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         log.info("==================认证开始===================");
         KaptchaUsernamePasswordToken token = (KaptchaUsernamePasswordToken) authenticationToken;
-        if (!(ObjectUtils.nullSafeEquals(token.getKaptcha(),ShiroUtil.getSessionKaptcha()))) {
-            throw new AuthenticationException("验证码有误");
-        }
+//        if (!(ObjectUtils.nullSafeEquals(token.getKaptcha(),ShiroUtil.getSessionKaptcha()))) {
+//            throw new AuthenticationException("验证码有误");
+//        }
         User user = userService.getOne(new QueryWrapper<User>().lambda().eq(User::getEmail, token.getUsername()));
         if (user == null) {
             log.warn("用户信息:[{}]不存在", new Gson().toJson(token));

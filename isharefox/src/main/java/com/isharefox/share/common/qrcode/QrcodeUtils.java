@@ -29,7 +29,7 @@ import java.util.Map;
  * </pre>
  */
 public class QrcodeUtils {
-    private static final int DEFAULT_LENGTH = 400;// 生成二维码的默认边长，因为是正方形的，所以高度和宽度一致
+    private static final int DEFAULT_LENGTH = 250;// 生成二维码的默认边长，因为是正方形的，所以高度和宽度一致
     private static final String FORMAT = "png";// 生成二维码的格式
 
     private static Logger logger = LoggerFactory.getLogger(QrcodeUtils.class);
@@ -87,7 +87,7 @@ public class QrcodeUtils {
 
             return toByteArray(file);
         } catch (Exception e) {
-            logger.warn("内容为：【" + content + "】的二维码生成失败！", e);
+            logger.error("内容为：【" + content + "】的二维码生成失败！", e);
             return null;
         }
     }

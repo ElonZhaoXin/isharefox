@@ -40,8 +40,9 @@ public class TradeController {
 	final IOrderInfoService orderInfoService;
 
 	final AssetLoader assetLoader;
+
 	/**
-	 * 获取支付二维码
+	 * 根据资源编号生成支付二维码页面
 	 * http://isharefox.com/share/1234567
 	 * @param resourceId 资源编号
 	 */
@@ -59,9 +60,9 @@ public class TradeController {
 		order.setOutTradeNo(tradeNo);
 		order.setUserId(item.getUserId());
 		order.setResourceId(resourceId);
+		order.setTotalAmount(item.getAmount());
 		orderInfoService.save(order);
 
-		Alipay.init();
 		//调用支付宝生成二维码支付链接
 		String qrcode = Alipay.FaceToFace
 				.getQrCode(item.getDescription(), tradeNo, item.getAmount().toString());

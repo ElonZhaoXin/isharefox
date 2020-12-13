@@ -13,17 +13,32 @@ import com.alipay.easysdk.kernel.Config;
 import com.alipay.easysdk.kernel.util.ResponseChecker;
 import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse;
 import com.baomidou.mybatisplus.core.toolkit.BeanUtils;
+import com.google.gson.Gson;
+import com.isharefox.share.common.exception.ServiceException;
+import com.isharefox.share.common.property.EnvProperties;
 import com.isharefox.share.settlement.alipay.controller.OrderDTO;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Service;
 
 /**
+ * 支付宝api
  * @author zhaoxin
+ * @see com.isharefox.share.settlement.alipay.controller.CallBackController#faceToFaceCallback(OrderDTO) 异步回调
  */
-public class Alipay {
-	public static void init() {
+@Service
+@AllArgsConstructor
+public class Alipay implements InitializingBean {
+
+	final EnvProperties envProperties;
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
 		Factory.setOptions(getOptions());
 	}
-	
-	private static Config getOptions() {
+
+
+	private Config getOptions() {
         Config config = new Config();
         config.protocol = "https";
         config.gatewayHost = "openapi.alipay.com";
@@ -44,16 +59,15 @@ public class Alipay {
 
         //可设置异步通知接收服务地址（可选）
 //        config.notifyUrl = "https://www.ishare.com/share/alipay/facetoface/callback";
-        config.notifyUrl = "http://222.129.54.196/share/alipay/facetoface/callback";
+        config.notifyUrl = envProperties.getDomain() + "/share/settlement/alipay/callback/facetoface";
         
         //可设置AES密钥，调用AES加解密相关接口时需要（可选）
 //        config.encryptKey = "<-- 请填写您的AES密钥，例如：aa4BtZ4tspm2wnXLb1ThQA== -->";
 
         return config;
     }
-	
-	
-	
+
+
 	/**
 	 * 当面付相关AP封装
 	 * @author zhaoxin
@@ -74,39 +88,29 @@ public class Alipay {
 			try {
 	            // 2. 发起API调用（以创建当面付收款二维码为例）
 	            AlipayTradePrecreateResponse response = Payment.FaceToFace()
-	                    .preCreate(subject, outTradeNo, totalAmount);
+						.preCreate(subject, outTradeNo, totalAmount);
 	            // 3. 处理响应或异常
 	            if (ResponseChecker.success(response)) {
-	                System.out.println("调用成功");
 	                return response.getQrCode();
 	            } else {
-	                System.err.println("调用失败，原因：" + response.msg + "，" + response.subMsg);
-	                throw new RuntimeException(response.msg + "，" + response.subMsg);    
+					throw new ServiceException("交易预创建，生成正扫二维码失败," + new Gson().toJson(response));
 	            }
 	        } catch (Exception e) {
-	            System.err.println("调用遭遇异常，原因：" + e.getMessage());
-	            throw new RuntimeException(e.getMessage(), e);
+				throw new ServiceException("交易预创建，生成二维码异常", e);
 	        }
 		}
 		
 		/**
 		 * 当面付异步通知验签
-		 * @param order
 		 * @return
 		 */
-		public static boolean verifyNotify(OrderDTO order) {
-			Map<String, Object> srcParams = BeanUtils.beanToMap(order);
-			Map<String, String> parameters = new HashMap<>();
-			srcParams.forEach((key, value)  -> {
-				parameters.put(key, (String) value);
-			});
+		public static boolean verifyNotify(Map<String, String> parameters) {
 			try {
-				Factory.Payment.Common().verifyNotify(parameters);
+				return Factory.Payment.Common().verifyNotify(parameters);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
 			}
-			return true;
 		}
 		
 	}

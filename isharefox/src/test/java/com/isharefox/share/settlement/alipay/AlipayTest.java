@@ -13,7 +13,6 @@ class AlipayTest {
 
 	@Test
 	void testGetQrCode() {
-		Alipay.init();
 		String qrCode = Alipay.FaceToFace.getQrCode("256G ihone", "test002", "1");
 		assertNotNull(qrCode);
 		System.out.println(qrCode);
