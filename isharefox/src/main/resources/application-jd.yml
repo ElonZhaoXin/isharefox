@@ -27,3 +27,4 @@ alipay:
 
 env:
   domain: http://116.196.91.182:8080
+  webSocketDomian: ws://116.196.91.182:8080/websocket

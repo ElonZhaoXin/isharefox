@@ -3,17 +3,15 @@
  */
 package com.isharefox.share.trade.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.isharefox.share.common.constans.PageConstans;
 import com.isharefox.share.common.property.AssetLoader;
+import com.isharefox.share.common.property.EnvProperties;
 import com.isharefox.share.common.qrcode.QrcodeUtils;
 import com.isharefox.share.common.util.ImageBase64Util;
 import com.isharefox.share.item.service.IItemService;
 import com.isharefox.share.settlement.alipay.service.IOrderInfoService;
 import com.isharefox.share.trade.dto.ItemPayDto;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -21,10 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.isharefox.share.item.entity.Item;
-import com.isharefox.share.item.mapper.ItemMapper;
 import com.isharefox.share.settlement.alipay.Alipay;
 import com.isharefox.share.settlement.alipay.entity.OrderInfo;
-import com.isharefox.share.settlement.alipay.mapper.OrderInfoMapper;
 
 /**
  * @author zhaoxin
@@ -41,6 +37,7 @@ public class TradeController {
 
 	final AssetLoader assetLoader;
 
+	final EnvProperties envProperties;
 	/**
 	 * 根据资源编号生成支付二维码页面
 	 * http://isharefox.com/share/1234567
@@ -68,7 +65,11 @@ public class TradeController {
 				.getQrCode(item.getDescription(), tradeNo, item.getAmount().toString());
 		//根据链接生成二维码图片
 		String qrImageStringBase64 = QrcodeUtils.createQrcodeBase64(qrcode, assetLoader.getAliLogFile());
-		ItemPayDto itemPayDto = ItemPayDto.builder().qrCodeBase64(ImageBase64Util.appendImageTypePrefix(qrImageStringBase64)).build();
+		ItemPayDto itemPayDto = ItemPayDto.builder()
+				.qrCodeBase64(ImageBase64Util.appendImageTypePrefix(qrImageStringBase64))
+				.webSocketUrl(envProperties.getWebSocketDomian() + "/" + item.getResourceId() + "/" + tradeNo)
+				.orderInfo(order)
+				.build();
 		model.addAttribute(PageConstans.ATTRIBUTE_NAME, itemPayDto);
 		// 跳转展码页面
 		return "item-pay";

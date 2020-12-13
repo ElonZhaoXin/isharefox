@@ -3,7 +3,6 @@
  */
 package com.isharefox.share.settlement.alipay;
 
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -12,11 +11,10 @@ import com.alipay.easysdk.factory.Factory.Payment;
 import com.alipay.easysdk.kernel.Config;
 import com.alipay.easysdk.kernel.util.ResponseChecker;
 import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse;
-import com.baomidou.mybatisplus.core.toolkit.BeanUtils;
 import com.google.gson.Gson;
 import com.isharefox.share.common.exception.ServiceException;
 import com.isharefox.share.common.property.EnvProperties;
-import com.isharefox.share.settlement.alipay.controller.OrderDTO;
+import com.isharefox.share.settlement.alipay.dto.OrderDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;

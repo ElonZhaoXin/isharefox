@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -39,6 +40,13 @@ public class ItemAddDto {
     @DecimalMin(value = "0")
     @NotNull
     private BigDecimal amount;
+
+    /**
+     * 资源存放地址，例如百度网盘url
+     */
+    @NotBlank
+    @URL
+    private String url;
 
     /**
      * 0-创建，未发布；1=上架，正常售卖；2-下架

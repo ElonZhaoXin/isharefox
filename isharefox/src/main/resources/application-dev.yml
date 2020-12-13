@@ -27,3 +27,4 @@ alipay:
 
 env:
   domain: http://localhost:8080
+  webSocketDomian: ws://localhost:8080/websocket

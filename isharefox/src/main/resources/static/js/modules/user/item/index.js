@@ -65,6 +65,7 @@ layui.define(['layer', 'form', 'table'], function(exports){
             ,cols: [[ //表头
                 {field: 'id', title: '编号', fixed: 'left', width:80}
                 ,{field: 'description', title: '商品描述', width:180}
+                ,{field: 'url', title: '资源链接', width:180}
                 ,{field: 'amount', title: '金额', width:80, sort: true}
                 ,{field: 'zipPwd', title: '密码', width:80, sort: true}
                 ,{field: 'linkUrl', title: '收款链接', width: 300}

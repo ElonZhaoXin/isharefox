@@ -1,0 +1,24 @@
+.order-item {
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+}
+.order-label {
+    width: 80px !important;
+}
+.order-input {
+    margin-left: 80px !important;
+    width: 220px !important;
+}
+
+.order-password-input {
+    margin-left: 80px !important;
+    width: 220px !important;
+}
+
+.code-style {
+    margin-top: 50px !important;
+}
+
+p {
+    margin-top: 10px !important;
+}

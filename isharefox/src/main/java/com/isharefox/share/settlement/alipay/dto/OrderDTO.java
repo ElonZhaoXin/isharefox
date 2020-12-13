@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.isharefox.share.settlement.alipay.controller;
+package com.isharefox.share.settlement.alipay.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

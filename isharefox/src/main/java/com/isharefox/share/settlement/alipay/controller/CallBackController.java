@@ -3,6 +3,7 @@ package com.isharefox.share.settlement.alipay.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
+import com.isharefox.share.settlement.alipay.dto.OrderDTO;
 import com.isharefox.share.settlement.alipay.service.IOrderInfoService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
@@ -49,6 +50,7 @@ public class CallBackController {
 					.and(i -> i.eq(OrderInfo::getOutTradeNo, order.getOutTradeNo())
 							.eq(OrderInfo::getTotalAmount, order.getTotalAmount())));
 			if (update) {
+				orderInfoService.pushPassword2Clinet(order.getOutTradeNo());
 				return "success";
 			} else {
 				log.error("alipay异步回调请求更新失败");

@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>welcome isharefoxer</title>
 
@@ -19,8 +19,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/layui/css/layui.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/css/item-pay.css}">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -63,23 +64,35 @@
     <div class="top-bannar">
         <div class="container">
             <div class="row row-style">
-                <div class="col-lg-8">
-                    <table>
-                        <tr>
-                            <td>
-                                <th:block>
-                                    <img th:src="${page.qrCodeBase64}"/>
-                                </th:block>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                打开手机支付宝<br>
-                                扫一扫付款获取资源密码
-                            </td>
-                        </tr>
-                    </table>
+
+                <div class="col-lg-3 layui-col-md-offset1">
+                    <th:block>
+                        <img th:src="${page.qrCodeBase64}"/>
+                        <!--   type="hidden"     -->
+                        <input id="webSocketUrl" type="hidden" th:value="${page.webSocketUrl}"/>
+                    </th:block>
                 </div><!-- /.col-lg-8 -->
+                <div class="col-lg-4 code-style">
+                    <p>打开手机支付宝</p>
+                    <p>扫一扫付款获取密码</p>
+
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item order-item">
+                            <label class="layui-form-label order-label">订单号</label>
+                            <div class="layui-input-block order-input">
+                                <input type="text" id="orderId" th:value="${page.getOrderInfo().getOutTradeNo()}"
+                                       required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item order-item">
+                            <label class="layui-form-label order-label">密码</label>
+                            <div class="layui-input-block order-password-input">
+                                    <input type="text" id="password" required  lay-verify="required" placeholder="支付后获取" autocomplete="off" class="layui-input">
+<!--                                    <button type="button" class="layui-btn layui-btn-fluid">流体按钮（最大化适应）</button>-->
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="col-lg-4">
                     <div class="layui-row">
@@ -140,7 +153,8 @@
                 <img class="featurette-image img-responsive center-block" data-src="/images/demo.jpg"
                      alt="isharefox image">
                 -->
-                <img class="featurette-image img-responsive center-block" alt="isharefox image" lay-src="/images/demo.jpg">
+                <img class="featurette-image img-responsive center-block" alt="isharefox image"
+                     lay-src="/images/demo.jpg">
             </div>
         </div>
 
@@ -152,7 +166,8 @@
                 <p class="lead">一定要是公开分享的模式，不要设置提取码。否则影响用户支付意愿！</p>
             </div>
             <div class="col-md-5 col-md-pull-7">
-                <img class="featurette-image img-responsive center-block" alt="isharefox image" lay-src="/images/demo.jpg">
+                <img class="featurette-image img-responsive center-block" alt="isharefox image"
+                     lay-src="/images/demo.jpg">
             </div>
         </div>
 
@@ -163,7 +178,8 @@
                 <h2 class="featurette-heading">最后，将此商品的信息发布到isharefox<span class="text-muted">然后坐等收款</span></h2>
             </div>
             <div class="col-md-5">
-                <img class="featurette-image img-responsive center-block" alt="isharefox image" lay-src="/images/demo.jpg">
+                <img class="featurette-image img-responsive center-block" alt="isharefox image"
+                     lay-src="/images/demo.jpg">
             </div>
         </div>
 
@@ -175,7 +191,8 @@
                 <p class="lead">例如百度网盘的资源，去百度注册资源，提高搜索排名</p>
             </div>
             <div class="col-md-5 col-md-pull-7">
-                <img class="featurette-image img-responsive center-block" alt="isharefox image" lay-src="/images/demo.jpg">
+                <img class="featurette-image img-responsive center-block" alt="isharefox image"
+                     lay-src="/images/demo.jpg">
             </div>
         </div>
 
@@ -187,7 +204,8 @@
                 <p class="lead">例如百度网盘的资源，去百度注册资源，提高搜索排名</p>
             </div>
             <div class="col-md-5">
-                <img class="featurette-image img-responsive center-block" alt="isharefox image" lay-src="/images/demo.jpg">
+                <img class="featurette-image img-responsive center-block" alt="isharefox image"
+                     lay-src="/images/demo.jpg">
             </div>
         </div>
 
@@ -218,6 +236,43 @@
     }).use('login'); //加载入口
 </script>
 
+<script>
+    var $ = layui.$;
+    var webSocketUrl = $("#webSocketUrl").val();
+    var orderId = $("#orderId").val();
+    initWebsocket();
+
+    /**
+     * 连接到服务端ws
+     */
+    function initWebsocket() {
+        if ("WebSocket" in window) {
+            //alert("您的浏览器支持 WebSocket!");
+            // 打开一个 web socket
+            var ws = new WebSocket(webSocketUrl);
+
+            ws.onopen = function () {
+                // Web Socket 已连接上，使用 send() 方法发送数据
+                //ws.send("来自客户端消息message");
+            };
+
+            ws.onmessage = function (evt) {
+                var received_msg = evt.data;
+                alert("服务器推送消息：" + received_msg);
+                $("#password").val(received_msg);
+            };
+
+            // ws.onclose = function()
+            // {
+            //     // 关闭 websocket
+            //     alert("连接已关闭...");
+            // };
+        } else {
+            // 浏览器不支持 WebSocket
+            alert("您的浏览器不支持 WebSocket可能不发!");
+        }
+    }
+</script>
 </body>
 
 

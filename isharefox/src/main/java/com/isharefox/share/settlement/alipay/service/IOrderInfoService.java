@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-12-05
  */
 public interface IOrderInfoService extends IService<OrderInfo> {
-
+    public void pushPassword2Clinet(String orderId);
 }

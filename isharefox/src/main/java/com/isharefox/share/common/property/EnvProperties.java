@@ -7,4 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class EnvProperties {
     private String domain;
+
+    private String webSocketDomian;
 }

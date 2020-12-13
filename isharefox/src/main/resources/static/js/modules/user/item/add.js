@@ -17,11 +17,11 @@ layui.define(['layer', 'form'], function(exports){
                     layer.msg(data.message);
                     window.location.href='/user/index';
                 } else {
-                    layer.msg('注册失败:' + data.message);
+                    layer.msg('资源添加失败:' + data.message);
                 }
             },
             error:function(data){
-                layer.msg('注册失败:' + data.message);
+                layer.msg('资源添加失败:' + data.message);
             }
         });
         return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
