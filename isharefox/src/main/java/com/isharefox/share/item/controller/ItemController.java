@@ -8,10 +8,7 @@ import com.isharefox.share.auth.ShiroUtil;
 import com.isharefox.share.common.api.BaseResponse;
 import com.isharefox.share.common.property.EnvProperties;
 import com.isharefox.share.common.util.IdGeneratoer;
-import com.isharefox.share.item.dto.GenericItemDtoResponse;
-import com.isharefox.share.item.dto.ItemAddDto;
-import com.isharefox.share.item.dto.ItemDeleteDto;
-import com.isharefox.share.item.dto.ItemDto;
+import com.isharefox.share.item.dto.*;
 import com.isharefox.share.item.entity.Item;
 import com.isharefox.share.item.service.IItemService;
 import lombok.RequiredArgsConstructor;
@@ -55,7 +52,7 @@ public class ItemController {
     }
 
     @PostMapping("/add")
-    public BaseResponse insert(@RequestBody @Validated ItemAddDto itemAddDto) {
+    public GenericItemAddDtoResponse insert(@RequestBody @Validated ItemAddDto itemAddDto) {
         Item item = modelMapper.map(itemAddDto, Item.class);
         item.setStatus("1");
         item.setUserId(ShiroUtil.currentUser().getUserId());
@@ -65,7 +62,10 @@ public class ItemController {
         item.setCreateTime(LocalDateTime.now());
         item.setUpdateTime(LocalDateTime.now());
         boolean result = iItemService.save(item);
-        return BaseResponse.builder().message(result ? "新增商品成功" : "新增商品失败").build();
+
+        GenericItemAddDtoResponse response = new GenericItemAddDtoResponse(item.getResourceId());
+        response.setMessage(result ? "新增商品成功" : "新增商品失败");
+        return response;
     }
 
     @PostMapping("/delete")
