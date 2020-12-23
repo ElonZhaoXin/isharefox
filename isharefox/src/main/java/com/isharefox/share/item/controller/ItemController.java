@@ -16,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletRequest;
 import java.time.LocalDateTime;
 
 /**
@@ -51,6 +52,13 @@ public class ItemController {
         return new GenericItemDtoResponse(itemDtoIPage);
     }
 
+    /**
+     * 后台登录调用接口示例(把用户名和密码放在url上，backLogin参数代表后台登录)
+     * http://localhost:8080/user/item/add?backLogin=1&username=123@abc.com&password=123123
+     * @see com.isharefox.share.auth.CustomFormAuthenticationFilter#isBackLogin(ServletRequest)
+     * @param itemAddDto
+     * @return
+     */
     @PostMapping("/add")
     public GenericItemAddDtoResponse insert(@RequestBody @Validated ItemAddDto itemAddDto) {
         Item item = modelMapper.map(itemAddDto, Item.class);
