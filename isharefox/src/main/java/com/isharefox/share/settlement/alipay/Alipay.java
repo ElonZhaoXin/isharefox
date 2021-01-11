@@ -14,7 +14,6 @@ import com.alipay.easysdk.payment.facetoface.models.AlipayTradePrecreateResponse
 import com.google.gson.Gson;
 import com.isharefox.share.common.exception.ServiceException;
 import com.isharefox.share.common.property.EnvProperties;
-import com.isharefox.share.settlement.alipay.dto.OrderDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;

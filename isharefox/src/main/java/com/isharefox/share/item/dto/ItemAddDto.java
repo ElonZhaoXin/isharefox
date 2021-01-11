@@ -18,6 +18,19 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class ItemAddDto {
+	 /**
+     * 用户名
+     */
+    @NotBlank(message = "用户名不能为空")
+    @Length(max = 60,message = "用户名长度不能大于60位")
+    private String username;
+    
+    /**
+     * 登录密码
+     */
+    @NotBlank(message = "登录密码不能为空")
+    @Length(max = 60,message = "登录密码长度不能大于60位")
+    private String password;
 
     /**
      * 密码
