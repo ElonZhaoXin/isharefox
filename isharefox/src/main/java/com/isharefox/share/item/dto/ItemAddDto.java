@@ -42,8 +42,7 @@ public class ItemAddDto {
     /**
      * 商品描述
      */
-    @NotBlank
-    @Length(max = 20, message = "商品描述太长")
+    @Length(max = 60, message = "商品描述太长")
     private String description;
 
     /**
@@ -57,7 +56,7 @@ public class ItemAddDto {
     /**
      * 资源存放地址，例如百度网盘url
      */
-    @NotBlank
+    
     @URL
     private String url;
 
