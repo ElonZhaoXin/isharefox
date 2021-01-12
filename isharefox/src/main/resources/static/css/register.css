@@ -22,3 +22,6 @@
 /*.form-signin .form-control:focus {*/
 /*  z-index: 2;*/
 /*}*/
+.layui-btn {
+    width: 200px;
+}

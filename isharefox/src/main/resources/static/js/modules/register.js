@@ -1,7 +1,12 @@
-layui.define(['layer', 'form'], function (exports) {
-    var layer = layui.layer
-        , form = layui.form;
+layui.define(['layer', 'form', 'flow','element'], function (exports) {
+    var layer = layui.layer,
+        form = layui.form,
+        flow = layui.flow,
+        element = layui.element;
     exports('register', {}); //注意，这里是模块输出的核心，模块名必须和use时的模块名一致
+
+    //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
+    flow.lazyimg();
 
     var $ = layui.$;
     form.verify({
@@ -35,7 +40,7 @@ layui.define(['layer', 'form'], function (exports) {
                         icon: 6,
                         time: 2000 //2秒关闭（如果不配置，默认是3秒）
                     }, function(){
-                        window.location.href = '/login.html';
+                        window.location.href = '/';
                     });
                 } else {
                     layer.msg(data.message, {

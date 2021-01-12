@@ -7,12 +7,12 @@
 }
 .order-input {
     margin-left: 80px !important;
-    width: 220px !important;
+    width: 172px !important;
 }
 
 .order-password-input {
     margin-left: 80px !important;
-    width: 220px !important;
+    width: 172px !important;
 }
 
 .code-style {
@@ -21,4 +21,9 @@
 
 p {
     margin-top: 10px !important;
+}
+
+.body-center {
+    margin: auto;
+    width: 70%;
 }

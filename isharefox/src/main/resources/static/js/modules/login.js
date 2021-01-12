@@ -18,6 +18,7 @@ layui.define(['layer', 'form', 'flow','element'], function (exports) {
         }
     });
 
+
     //监听提交
     form.on('submit(submit)', function (data) {
         var index = layer.load();
@@ -37,11 +38,13 @@ layui.define(['layer', 'form', 'flow','element'], function (exports) {
                         window.location.href = '/user/index';
                     });
                 } else {
+                    //清空登录密码 阻止重复提交
+                    $("input[type='password']").val('');
                     layer.msg(data.message, {
                         icon: 5,
                         time: 2000 //2秒关闭（如果不配置，默认是3秒）
                     }, function(){
-                        window.location.href = '/login.html';
+                        //window.location.href = '/login.html';
                     });
                 }
             },

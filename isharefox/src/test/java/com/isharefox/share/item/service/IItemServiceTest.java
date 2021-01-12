@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.isharefox.share.item.entity.Item;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IItemServiceTest {
 	@Autowired
 	private IService<Item> itemServiceImpl;
