@@ -76,23 +76,6 @@ public class ItemController {
         return response;
     }
     
-    @PostMapping("/clientpub")
-    public GenericItemAddDtoResponse clientPub(@RequestBody @Validated ItemAddDto itemAddDto) {
-        Item item = modelMapper.map(itemAddDto, Item.class);
-        item.setStatus("1");
-        item.setUserId(itemAddDto.getUsername());
-
-        Item maxItem = iItemService.getOne(new QueryWrapper<Item>().lambda().orderByDesc(Item::getId).last("limit 1"));
-        item.setResourceId(IdGeneratoer.increment32Num(maxItem != null ? maxItem.getResourceId() : null));
-        item.setCreateTime(LocalDateTime.now());
-        item.setUpdateTime(LocalDateTime.now());
-        boolean result = iItemService.save(item);
-
-        GenericItemAddDtoResponse response = new GenericItemAddDtoResponse(item.getResourceId());
-        response.setMessage(result ? "新增商品成功" : "新增商品失败");
-        return response;
-    }
-
     @PostMapping("/delete")
     public BaseResponse insert(@Validated @RequestBody ItemDeleteDto itemDeleteDto) {
         boolean result = iItemService.removeById(itemDeleteDto.getId());

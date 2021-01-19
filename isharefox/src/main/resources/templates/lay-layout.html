@@ -17,15 +17,17 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="/">首页</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
+            <li class="layui-nav-item"><a href="">一元钱尝试</a></li>
+            <li class="layui-nav-item"><a href="">客户端工具</a></li>
+            
+            <!-- <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
                     <dd><a href="">邮件管理</a></dd>
                     <dd><a href="">消息管理</a></dd>
                     <dd><a href="">授权管理</a></dd>
                 </dl>
-            </li>
+            </li> -->
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -49,8 +51,8 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">商品管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a th:href="@{/user/item/list}">商品列表</a></dd>
                         <dd><a th:href="@{/user/item/add}">新增商品</a></dd>
+                        <dd><a th:href="@{/user/item/list}">商品列表</a></dd>
                     </dl>
                 </li>
             </ul>

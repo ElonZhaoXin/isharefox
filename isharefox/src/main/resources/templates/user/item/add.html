@@ -7,33 +7,33 @@
     <div class="layui-container" style="padding: 30px;">
         <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-form-item">
-                <label class="layui-form-label required">商品描述</label>
+                <label class="layui-form-label required">资源名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="description" lay-verify="required" autocomplete="off" placeholder="请输入商品描述"
+                    <input type="text" name="description" lay-verify="required" autocomplete="off" placeholder="请输入商品描述，例如：定投十年财务自由.epub"
                            class="layui-input">
                 </div>
             </div>
 
-          <div class="layui-form-item">
+         <!--  <div class="layui-form-item">
             <label class="layui-form-label required">资源链接</label>
             <div class="layui-input-block">
-              <input type="text" name="url" lay-verify="required|url" autocomplete="off" placeholder="请输入资源网盘地址，供爱享狐管理员审核"
+              <input type="text" name="url" lay-verify="url" autocomplete="off" placeholder="发布资源的地址，例如百度网盘：https://pan.baidu.com/s /1onOhkjvt9WGiUHvbIIG4MA"
                      class="layui-input">
             </div>
-          </div>
+          </div> -->
 
             <div class="layui-form-item">
-                <label class="layui-form-label required">价格</label>
+                <label class="layui-form-label required">资源价格</label>
                 <div class="layui-input-block">
-                    <input type="text" name="amount" lay-verify="required|number" autocomplete="off"
-                           placeholder="请输入商品价格" class="layui-input">
+                    <input type="number" name="amount" lay-verify="required|number" autocomplete="off"
+                           placeholder="请输入小于等于1000元的商品价格" class="layui-input" max="1000">
                 </div>
             </div>
 
             <div class="layui-form-item">
-                <label class="layui-form-label required">密码</label>
+                <label class="layui-form-label required">解压密码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zipPwd" lay-verify="required" autocomplete="off" placeholder="请输入密码"
+                    <input type="text" name="zipPwd" lay-verify="required" autocomplete="off" placeholder="请输入资源解压密码"
                            class="layui-input">
                 </div>
             </div>
